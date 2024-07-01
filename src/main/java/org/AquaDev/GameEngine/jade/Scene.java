@@ -1,6 +1,9 @@
 package org.AquaDev.GameEngine.jade;
 
 public abstract class Scene {
+
+    protected Camera camera;
+
     public Scene() {
 
     }
