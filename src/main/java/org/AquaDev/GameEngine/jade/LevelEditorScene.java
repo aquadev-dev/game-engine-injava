@@ -1,6 +1,7 @@
 package org.AquaDev.GameEngine.jade;
 
 import org.AquaDev.GameEngine.renderer.Shader;
+import org.AquaDev.GameEngine.util.Time;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.lwjgl.BufferUtils;
@@ -86,9 +87,14 @@ public class LevelEditorScene extends Scene {
 
     @Override
     public void update(float dt) {
+        camera.position.x -= dt * 50.0f;
+        camera.position.y -= dt * 20.0f;
+
+
         defaultShader.use();
         defaultShader.uploadMat4f("uProjection", camera.getProjectionMatrix());
         defaultShader.uploadMat4f("uView", camera.getViewMatrix());
+        defaultShader.uploadFloat("uTime", Time.getTime());
 
         // Bind what VAO we are using
         glBindVertexArray(vaoID);
