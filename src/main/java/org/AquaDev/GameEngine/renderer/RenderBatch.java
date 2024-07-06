@@ -2,6 +2,7 @@ package org.AquaDev.GameEngine.renderer;
 
 import org.AquaDev.GameEngine.components.SpriteRenderer;
 import org.AquaDev.GameEngine.jade.Window;
+import org.AquaDev.GameEngine.util.AssetPool;
 import org.joml.Vector4f;
 
 import static org.lwjgl.opengl.GL15.*;
@@ -32,8 +33,7 @@ public class RenderBatch {
     private Shader shader;
 
     public RenderBatch(int maxBatchSize) {
-        shader = new Shader("assets/shaders/default.glsl");
-        shader.compile();
+        shader = AssetPool.getShader("assets/shaders/default.glsl");
         this.sprites = new SpriteRenderer[maxBatchSize];
         this.maxBatchSize = maxBatchSize;
 

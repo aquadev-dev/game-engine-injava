@@ -2,6 +2,7 @@ package org.AquaDev.GameEngine.jade;
 
 
 import org.AquaDev.GameEngine.components.SpriteRenderer;
+import org.AquaDev.GameEngine.util.AssetPool;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 
@@ -35,12 +36,16 @@ public class LevelEditorScene extends Scene {
 
             }
         }
+
+        loadResources();
+    }
+
+    private void loadResources() {
+        AssetPool.getShader("assets/shaders/default.glsl");
     }
 
     @Override
     public void update(float dt) {
-
-         System.out.println(1.0f / dt);
         for (GameObject go : this.gameObjects) {
             go.update(dt);
         }
